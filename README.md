@@ -1,6 +1,6 @@
 # FastSurf
 
-### [Paper](https://arxiv) | [Project Page](https://rokit-healthcare.github.io/FastSurf/)
+### [Paper](#) | [Project Page](https://rokit-healthcare.github.io/FastSurf/)
 
 > FastSurf: Fast Neural RGB-D Surface Reconstruction using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning <br />
 > *Seunghwan Lee, Gwanmo Park, Hyewon Son, Jiwon Ryu, Han Joo Chae* <br />
@@ -91,7 +91,7 @@ The paper uses two different datasets: [ScanNet V2](https://github.com/ScanNet/S
 - ScanNet V2 camera poses should be transformed to the OpenGL format before running.
 - The synthetic scene dataset can be downloaded from the links ([dataset](http://kaldir.vc.in.tum.de/neural_rgbd/neural_rgbd_data.zip), [culled ground truth meshes](http://kaldir.vc.in.tum.de/neural_rgbd/meshes.zip)) provided in the repository of [Neural RGB-D Surface Reconstruction](https://github.com/dazinovic/neural-rgbd-surface-reconstruction).
 
-## Citation
+<!-- ## Citation
 
 If you use this code in your research, please consider citing:
 
@@ -102,7 +102,7 @@ If you use this code in your research, please consider citing:
   journal={arXiv preprint arXiv:0000.00000},
   year={2023}
 }
-```
+``` -->
 
 ## Further information
 
