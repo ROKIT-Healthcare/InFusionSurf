@@ -26,7 +26,7 @@ cd external/NumpyMarchingCubes
 python setup.py install
 ```
 
-You also need to tiny-cuda-nn pytorch extension via https://github.com/NVlabs/tiny-cuda-nn
+You also need to install tiny-cuda-nn pytorch extension at https://github.com/NVlabs/tiny-cuda-nn.
 
 ## Run
 You can run an optimization using:
@@ -38,14 +38,14 @@ python optimize.py --config configs/<config_file>.txt
 Make sure you run TSDF fusion for the pretraining step:
 
 ```
-python tsdf_fution.py --config configs/<config_file>.txt
+python tsdf_fusion.py --config configs/<config_file>.txt
 ```
-After optimization, you can extract the 3D surface mesh using:
+After the optimization, you can extract the 3D surface mesh using:
 
 ```
 python extract_mesh.py --config configs/<config_file>.txt --extckpt=<iteration>
 ```
-You can evaluate the mesh using the following command (only synthetic dataset applicable):
+You can evaluate the mesh using the following command (only applicable for the synthetic dataset):
 
 ```
 python eval/evaluation.py \
@@ -88,7 +88,7 @@ The data follows the same structure of [Neural RGB-D Surface Reconstruction](htt
 The paper uses two different datasets: [ScanNet V2](https://github.com/ScanNet/ScanNet) and the synthetic scene dataset used by [Neural RGB-D Surface Reconstruction](https://github.com/dazinovic/neural-rgbd-surface-reconstruction)
 
 - ScanNet V2 can be downloaded from [the original author's page](https://github.com/ScanNet/ScanNet) by making a request.
-- ScanNet V2 camera poses should be transformed to the OpenGL format before running optimization.
+- ScanNet V2 camera poses should be transformed to the OpenGL format before running.
 - The synthetic scene dataset can be downloaded from the links ([dataset](http://kaldir.vc.in.tum.de/neural_rgbd/neural_rgbd_data.zip), [culled ground truth meshes](http://kaldir.vc.in.tum.de/neural_rgbd/meshes.zip)) provided in the repository of [Neural RGB-D Surface Reconstruction](https://github.com/dazinovic/neural-rgbd-surface-reconstruction).
 
 ## Citation
