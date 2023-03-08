@@ -2,13 +2,13 @@
 
 ### [Paper](https://arxiv) | [Project Page](https://rokit-healthcare.github.io/FastSurf/)
 
-> FastSurf: Fast Neural RGB-D Surface Reconstruction using Dense Feature Grid and Per-Frame Intrinsic Refinement <br />
+> FastSurf: Fast Neural RGB-D Surface Reconstruction using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning <br />
 > *Seunghwan Lee, Gwanmo Park, Hyewon Son, Jiwon Ryu, Han Joo Chae* <br />
 > arXiv preprint
 
 ![An overview of FastSurf.](docs/static/images/model-teaser.jpg "An overview of FastSurf.")
 
-This repository contains the official implementation of ***FastSurf***, an accelerated neural radiance field (NeRF) framework that incorporates depth information for 3D reconstruction. The novel per-frame intrinsic refinement and classical TSDF fusion guided pretraining scheme allow fast and high-quality 3D surface reconstruction.
+This repository contains the official implementation of ***FastSurf***, an accelerated neural radiance field (NeRF) framework that incorporates depth information for 3D reconstruction. The novel per-frame intrinsic refinement and classical TSDF Fusion prior learning schemes allow fast and high-quality 3D surface reconstruction.
 
 
 ## Installation
