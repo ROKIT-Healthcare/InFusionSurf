@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-    content="FastSurf - Surface reconstruction from color and depth images using a multi-layer perceptron.">
+    content="FastSurf: Fast Neural RGB-D Surface Reconstruction using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning.">
   <meta name="keywords" content="fastsurf, rgbd, rgb-d, surface, fast-surf, 3d, reconstruction">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Neural RGB-D Surface Reconstruction</title>
+  <title>FastSurf: Fast Neural RGB-D Surface Reconstruction</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -90,8 +90,7 @@
       <div class="column is-8">
         <img id="teaser" src="static/images/model-teaser.jpg" />
         <p class="subtitle has-text-centered">
-          Our method proposes per-frame intrinsic refinement and classical TSDF fusion guided pretraining schemes for
-          fast and high-quality 3D surface reconstruction.
+          Our method proposes per-frame intrinsic refinement and classical TSDF Fusion prior learning schemes for fast and high-quality 3D surface reconstruction.
         </p>
       </div>
     </div>
@@ -106,20 +105,7 @@
           <h2 class="title is-2">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              We introduce FastSurf, an accelerated neural radiance field (NeRF) framework that incorporates depth
-              information for 3D reconstruction.
-              A dense feature grid and shallow multi-layer perceptron are used for fast and accurate surface
-              optimization of the entire scene.
-              Our per-frame intrinsic refinement scheme corrects the frame-specific errors that cannot be handled by
-              global optimization.
-              Furthermore, FastSurf utilizes a classical real-time 3D surface reconstruction method, the truncated
-              signed distance field (TSDF) fusion,
-              as prior knowledge to pretrain the feature grid to accelerate the training.
-              The quantitative and qualitative experiments comparing the performances of FastSurf against prior work
-              indicate
-              that our method is capable of quickly and accurately reconstructing a scene with high-frequency details.
-              We also demonstrate the effectiveness of our TSDF fusion pretraining and per-frame intrinsic refinement
-              techniques via an ablation study.
+              We introduce FastSurf, an accelerated neural radiance field (NeRF) framework that incorporates depth information for 3D reconstruction. A dense feature grid and shallow multi-layer perceptron are used for fast and accurate surface optimization of the entire scene. Our per-frame intrinsic refinement scheme corrects the frame-specific errors that cannot be handled by global optimization. Furthermore, FastSurf utilizes a classical real-time 3D surface reconstruction method, the truncated signed distance field (TSDF) Fusion, as prior knowledge to pretrain the feature grid to accelerate the training. The quantitative and qualitative experiments comparing the performances of FastSurf against prior work indicate that our method is capable of quickly and accurately reconstructing a scene with high-frequency details. We also demonstrate the effectiveness of our per-frame intrinsic refinement and TSDF Fusion prior learning techniques via an ablation study.
             </p>
           </div>
         </div>
@@ -135,14 +121,11 @@
           <h3 class="title is-2">Results</h3>
           <div class="content has-text-justified">
             <p>
-              We compare our method with <a href="https://jingwenwang95.github.io/go_surf/">GO-Surf</a> and <a
-                href="https://dazinovic.github.io/neural-rgbd-surface-reconstruction/">Neural RGB-D</a> at different
-              points in time.
-              The comparison was conducted using <a href="http://www.scan-net.org/">ScanNet</a>.
-              When trained for a shorter amount of time, FastSurf generates much less erroneous surfaces and recovers
-              high-frequency details overlooked by GO-Surf.
-              Given a longer training time, FastSurf achieves a quality on par with that of Neural RGB-D, but at a
-              significantly shorter amount of time (X 7.7 faster on average).
+              We compare our method with <a href="https://jingwenwang95.github.io/go_surf/">GO-Surf</a> and 
+              <a href="https://dazinovic.github.io/neural-rgbd-surface-reconstruction/">Neural RGB-D</a> at different points in time. 
+              The comparison was conducted using <a href="http://www.scan-net.org/">ScanNet</a>. 
+              When trained for a shorter amount of time, FastSurf recovers high-frequency details overlooked by GO-Surf and generates much less erroneous surfaces. 
+              Given a longer training time, FastSurf achieves a quality on par with that of Neural RGB-D, but at a significantly shorter amount of time (×7.7 faster on average). 
               It also fixes the errors caused by the camera motion.
             </p>
           </div>
