@@ -1,0 +1,48 @@
+expname = kitchen
+basedir = ./logs
+datadir = ./data/kitchen
+dataset_type = scannet
+trainskip = 1
+
+N_iters = 75000
+N_rand = 900
+N_samples = 512
+N_importance = 16
+chunk = 4096  # 1024 * 16
+frame_features = 0
+optimize_poses = True
+use_deformation_field = False
+use_per_frame_alignment = False
+
+multires_views = 4
+
+progressive_learning = [10000]
+fusion_init = 3000
+
+lrate = 0.001
+
+voxel_size = 0.1
+use_filtered_depth = True
+
+rgb_weight = 0.5
+depth_weight = 0.0
+fs_weight = 10.0
+trunc_weight = 6000.0
+trunc = 0.05
+
+rgb_loss_type = l2
+sdf_loss_type = l2
+
+mode = sdf
+raw_noise_std = 0.0
+
+translation = [0.3, -3.42, -0.12]
+sc_factor = 0.5
+near = 0.0
+far = 4.0
+
+factor = 1
+render_factor = 1
+
+i_img = 5000
+i_weights = 5000

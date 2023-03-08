@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="FastSurf - Surface reconstruction from color and depth images using a multi-layer perceptron.">
+  <meta name="keywords" content="fastsurf, rgbd, rgb-d, surface, fast-surf, 3d, reconstruction">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neural RGB-D Surface Reconstruction</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/juxtapose.css">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">FastSurf: Fast Neural RGB-D Surface Reconstruction using Dense
+              Feature Grid
+              and Per-Frame Intrinsic Refinement</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/seunghwan-lee-9b2746102/">Seunghwan Lee</a>
+              </span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/gwanmo-park-5a4117171/">Gwanmo Park</a>
+              </span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/%ED%98%9C%EC%9B%90-%EC%86%90-b1979620a/">Hyewon Son</a>
+              </span>
+              <span class="author-block">
+                Jiwon Ryu
+              </span>
+              <span class="author-block">
+                <a href="http://hanjoochae.com">Han Joo Chae</a>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="https://rokithealthcare.com/">ROKIT Healthcare, Inc.</a></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/ROKIT-Healthcare/FastSurf"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <img id="teaser" src="static/images/model-teaser.jpg" />
+        <p class="subtitle has-text-centered">
+          Our method proposes per-frame intrinsic refinement and classical TSDF fusion guided pretraining scheme for
+          fast and high-quality 3D surface reconstruction.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-two-thirds">
+          <h2 class="title is-2">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We introduce FastSurf, an accelerated neural radiance field (NeRF) framework that incorporates depth
+              information for 3D reconstruction.
+              A dense feature grid and shallow multi-layer perceptron are used for fast and accurate surface
+              optimization of the entire scene.
+              Our per-frame intrinsic refinement scheme corrects the frame-specific errors that cannot be handled by
+              global optimization.
+              Furthermore, FastSurf utilizes a classical real-time 3D surface reconstruction method, the truncated
+              signed distance field (TSDF) fusion,
+              as prior knowledge to pretrain the feature grid to accelerate the training.
+              The quantitative and qualitative experiments comparing the performances of FastSurf against prior work
+              indicate
+              that our method is capable of quickly and accurately reconstructing a scene with high-frequency details.
+              We also demonstrate the effectiveness of our TSDF fusion pretraining and per-frame intrinsic refinement
+              techniques via an ablation study.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </section>
+
+  <!-- <section>
+  <!-- Paper video. -->
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-6">
+      <h2 class="title is-2">Video</h2>
+      <!-- <div class="publication-video">
+        <iframe src="https://www.youtube.com/embed/iWuSowPsC3g?rel=0&amp;showinfo=0" frameborder="0"
+          allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div> -->
+    </div>
+  </div>
+  <!--/ Paper video. -->
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-8">
+          <h3 class="title is-2">Results</h3>
+          <div class="content has-text-justified">
+            <p>
+              We compare our method with <a href="https://jingwenwang95.github.io/go_surf/">GO-Surf</a> and <a
+                href="https://dazinovic.github.io/neural-rgbd-surface-reconstruction/">Neural RGB-D</a> at different
+              points in time.
+              The comparison was conducted using <a href="http://www.scan-net.org/">ScanNet</a>.
+              When trained for a shorter amount of time, FastSurf generates much less erroneous surfaces and recovers
+              high-frequency details overlooked by GO-Surf.
+              Given a longer training time, FastSurf achieves a quality on par with that of Neural RGB-D, but at a
+              significantly shorter amount of time (X 7.7 faster on average).
+              It also fixes the errors caused by the camera motion.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="columns is-centered">
+        <div class=" column is-4">
+          <div class=" content juxtapose">
+            <img src="static/images/view1_go.png" data-label="GO-Surf ~19 min" />
+            <img src="static/images/view1_our_20k.png" data-label="Ours ~13 min" />
+          </div>
+        </div>
+        <div class=" column is-4">
+          <div class=" content juxtapose">
+            <img src="static/images/view4_neu.png" data-label="Neural RGB-D ~8 hours" />
+            <img src="static/images/view4_our_75k.png" data-label="Ours ~55 min" />
+          </div>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class=" column is-4">
+          <div class=" content juxtapose">
+            <img src="static/images/view3_go.png" data-label="GO-Surf ~19 min" />
+            <img src="static/images/view3_our_20k.png" data-label="Ours ~13 min" />
+          </div>
+        </div>
+        <div class=" column is-4">
+          <div class=" content juxtapose">
+            <img src="static/images/view7_neu.png" data-label="Neural RGB-D ~9 hours" />
+            <img src="static/images/view7_our_75k.png" data-label="Ours ~74 min" />
+          </div>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class=" column is-4">
+          <div class=" content juxtapose">
+            <img src="static/images/view8_go.png" data-label="GO-Surf ~20 min" />
+            <img src="static/images/view8_our_20k.png" data-label="Ours ~12 min" />
+          </div>
+        </div>
+        <div class=" column is-4">
+          <div class=" content juxtapose">
+            <img src="static/images/view10_neu.png" data-label="Neural RGB-D ~9 hours" />
+            <img src="static/images/view10_our_75k.png" data-label="Ours ~74 min" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./static/js/juxtapose.min.js"></script>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{Lee_2023_arXiv,
+  title={FastSurf: Fast Neural RGB-D Surface Reconstruction using Dense Feature Grid and Per-Frame Intrinsic Refinement},
+  author={Lee, Seunghwan and Park, Gwanmo and Son, Hyewon and Ryu Jiwon and Chae, Han Joo},
+  journal={arXiv preprint arXiv:0000.00000},
+  year={2023}
+}</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="#">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/ROKIT-Healthcare/FastSurf" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0
+                International License</a>.
+            </p>
+            <p>
+              This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source
+                code</a> of this website, we just ask that you link back to the <a
+                href="https://nerfies.github.io/">original page</a> in the footer.
+              Please remember to remove the analytics code included in the header of the website which you do not want
+              on your website.
+            </p>
+            <p>
+              The comparison slider was implemented with <a href="https://juxtapose.knightlab.com/">Juxtapose</a>, which
+              is licensed under <a href="https://raw.githubusercontent.com/NUKnightLab/juxtapose/master/LICENSE">Mozilla
+                Public License Version 2.0</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
