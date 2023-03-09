@@ -1,6 +1,6 @@
 # FastSurf
 
-### [Paper](#) | [Project Page](https://rokit-healthcare.github.io/FastSurf/)
+### [Paper](https://arxiv.org/abs/2303.04508) | [Project Page](https://rokit-healthcare.github.io/FastSurf/)
 
 > FastSurf: Fast Neural RGB-D Surface Reconstruction using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning <br />
 > *Seunghwan Lee, Gwanmo Park, Hyewon Son, Jiwon Ryu, Han Joo Chae* <br />
@@ -91,18 +91,20 @@ The paper uses two different datasets: [ScanNet V2](https://github.com/ScanNet/S
 - ScanNet V2 camera poses should be transformed to the OpenGL format before running.
 - The synthetic scene dataset can be downloaded from the links ([dataset](http://kaldir.vc.in.tum.de/neural_rgbd/neural_rgbd_data.zip), [culled ground truth meshes](http://kaldir.vc.in.tum.de/neural_rgbd/meshes.zip)) provided in the repository of [Neural RGB-D Surface Reconstruction](https://github.com/dazinovic/neural-rgbd-surface-reconstruction).
 
-<!-- ## Citation
+## Citation
 
 If you use this code in your research, please consider citing:
 
 ```
-@article{Lee_2023_arXiv,
-  title={FastSurf: Fast Neural RGB-D Surface Reconstruction using Dense Feature Grid and Per-Frame Intrinsic Refinement},
-  author={Lee, Seunghwan and Park, Gwanmo and Son, Hyewon and Ryu Jiwon and Chae, Han Joo},
-  journal={arXiv preprint arXiv:0000.00000},
-  year={2023}
+@misc{lee2023fastsurf,
+      title={FastSurf: Fast Neural RGB-D Surface Reconstruction using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning}, 
+      author={Seunghwan Lee and Gwanmo Park and Hyewon Son and Jiwon Ryu and Han Joo Chae},
+      year={2023},
+      eprint={2303.04508},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
-``` -->
+```
 
 ## Further information
 
