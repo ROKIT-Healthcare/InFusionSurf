@@ -32,24 +32,24 @@ You also need to install tiny-cuda-nn pytorch extension at https://github.com/NV
 You can run an optimization using:
 
 ```
-python optimize.py --config configs/<config_file>.txt
+python optimize.py --config=configs/<config_file>.txt
 ```
 
 Make sure you run TSDF fusion for the pretraining step:
 
 ```
-python tsdf_fusion.py --config configs/<config_file>.txt
+python tsdf_fusion.py --config=configs/<config_file>.txt
 ```
 After the optimization, you can extract the 3D surface mesh using:
 
 ```
-python extract_mesh.py --config configs/<config_file>.txt --extckpt=<iteration>
+python extract_mesh.py --config=configs/<config_file>.txt --extckpt=<iteration>
 ```
 You can evaluate the mesh using the following command (only applicable for the synthetic dataset):
 
 ```
 python eval/evaluation.py \
-    --config configs/<config_file>.txt \
+    --config=configs/<config_file>.txt \
     --extckpt=<iteration> \
     --gtdir=<path_to_gt_mesh>
 ```
