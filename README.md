@@ -96,13 +96,11 @@ The paper uses two different datasets: [ScanNet V2](https://github.com/ScanNet/S
 If you use this code in your research, please consider citing:
 
 ```
-@misc{lee2023fastsurf,
-      title={FastSurf: Fast Neural RGB-D Surface Reconstruction using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning}, 
-      author={Seunghwan Lee and Gwanmo Park and Hyewon Son and Jiwon Ryu and Han Joo Chae},
-      year={2023},
-      eprint={2303.04508},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@article{lee2023fastsurf,
+  title={FastSurf: Fast Neural RGB-D Surface Reconstruction using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning},
+  author={Lee, Seunghwan and Park, Gwanmo and Son, Hyewon and Ryu, Jiwon and Chae, Han Joo},
+  journal={arXiv preprint arXiv:2303.04508},
+  year={2023}
 }
 ```
 
