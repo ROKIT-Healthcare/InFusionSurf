@@ -5,14 +5,52 @@ import imageio
 import losses
 import ast
 
+import torch
 from torch import optim
 from torch.utils.tensorboard import SummaryWriter
 from datasets.load_scannet import load_scannet_data
 from nerf_helpers import *
 from optimization import FeatureArray, PerFrameAlignment, PoseArray, DeformationField
 
+import tsdf_torch as tsdf
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+
+def rigid_transform(xyz, transform):
+    """Applies a rigid transform to an (N, 3) pointcloud.
+    """
+    xyz_h = np.hstack([xyz, np.ones((len(xyz), 1), dtype=np.float32)])
+    xyz_t_h = np.dot(transform, xyz_h.T).T
+    return xyz_t_h[:, :3]
+
+
+def get_view_frustum(depth_im, cam_intr, cam_pose, far):
+    """Get corners of 3D camera view frustum of depth image
+    """
+    im_h = depth_im.shape[0]
+    im_w = depth_im.shape[1]
+    max_depth = min([np.max(depth_im), far])
+
+    view_frust_pts = np.array([
+        (np.array([0,0,0,im_w,im_w])-cam_intr[0,2])*np.array([0,max_depth,max_depth,max_depth,max_depth])/cam_intr[0,0],
+        -(np.array([0,0,im_h,0,im_h])-cam_intr[1,2])*np.array([0,max_depth,max_depth,max_depth,max_depth])/cam_intr[1,1],
+        -np.array([0,max_depth,max_depth,max_depth,max_depth])
+    ])
+    view_frust_pts = rigid_transform(view_frust_pts.T, cam_pose).T
+
+    return view_frust_pts
+
+def get_scene_bound(depth_images, cam_poses, cam_intrinsic):
+    vol_bnds = np.zeros((2, 3))
+    
+    for cam_pose, depth_im in zip(cam_poses, depth_images):
+        # Compute camera view frustum and extend convex hull
+        view_frust_pts = get_view_frustum(depth_im, cam_intrinsic, cam_pose, 2)
+        vol_bnds[0] = np.minimum(vol_bnds[0], np.amin(view_frust_pts, axis=1))
+        vol_bnds[1] = np.maximum(vol_bnds[1], np.amax(view_frust_pts, axis=1))
+        
+    return vol_bnds
+        
 
 def batchify(fn, chunk):
     """Constructs a version of 'fn' that applies to smaller batches."""
@@ -558,7 +596,7 @@ def create_model(args):
 
     return render_kwargs_train, render_kwargs_test, start, grad_vars, models
 
-def create_pt_model(args):
+def create_pt_model(args, init_value):
     """ Create pre-training model
     """
     pt_model = grid.create_grid(
@@ -567,8 +605,7 @@ def create_pt_model(args):
         xyz_min=args.xyz_min, xyz_max=args.xyz_max,
         config={})
     
-    tsdf_init_np = np.load(os.path.join(args.datadir, 'geo_prior', 'init_tsdf.npy'))  
-    pt_model.init_from_numpy(tsdf_init_np[None, ...])
+    pt_model.init_from_numpy(init_value[None, ...])
     
     return pt_model
     
@@ -637,19 +674,40 @@ def train():
     args.hwf = hwf
     args.num_training_frames = len(images)
     
-    # Load scene bound from tsdf fusion
-    with open(os.path.join(args.datadir, 'geo_prior', 'scene_bound.txt')) as f:
-        args.xyz_min, args.xyz_max = [ast.literal_eval(s) for s in f.read().split('\n')]
-        args.xyz_min = torch.tensor(args.xyz_min)
-        args.xyz_max = torch.tensor(args.xyz_max)
-
-        print(f"scene bounds: {args.xyz_min}, {args.xyz_max}")
+    cam_intr = np.array([[focal, 0, W / 2],
+                         [0, focal, H / 2],
+                         [0, 0, 1]])
+    
+    # Get scene bbox size from depth images
+    vol_bnds = get_scene_bound(depth_images, poses, cam_intr)
+    
+    args.xyz_min = torch.tensor(vol_bnds[0], dtype=torch.float32)
+    args.xyz_max = torch.tensor(vol_bnds[1], dtype=torch.float32)
+    
+    print(f"scene bounds: {args.xyz_min}, {args.xyz_max}")
+    
+    # Loop through RGB-D images and fuse them together
+    t0_elapse = time.time()
+    print("fusion started")
+    
+    # Run TSDF Fusion algorithm
+    grid_tsdf, _ = tsdf.fusion(torch.tensor(depth_images, dtype=torch.float32), 
+                               torch.tensor(images, dtype=torch.float32), 
+                               torch.tensor(poses, dtype=torch.float32), 
+                               torch.tensor(cam_intr, dtype=torch.float32), 
+                               torch.tensor(vol_bnds, dtype=torch.float32), 
+                               args.voxel_size * args.sc_factor, 
+                               args.trunc * args.sc_factor, 
+                               1.0)
+    
+    fps = images.shape[0] / (time.time() - t0_elapse)
+    print("Average FPS: {:.2f}".format(fps))
         
     # Create model
     render_kwargs_train, render_kwargs_test, start, grad_vars, models = create_model(args)
     
     # Create pre-training model
-    pt_model = create_pt_model(args)
+    pt_model = create_pt_model(args, grid_tsdf.cpu().numpy())
     
     # dense feature grid indices
     _, _, xi, yi, zi = pt_model.grid.size()

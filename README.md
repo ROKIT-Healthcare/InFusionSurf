@@ -19,10 +19,13 @@ cd FastSurf
 pip install -r requirements.txt
 ```
 
-Please also install the external Marching cube packages via:
+Please also install the external Marching cube packages and TSDF Fusion pytorch extension via:
 
 ```
 cd external/NumpyMarchingCubes
+python setup.py install
+
+cd external/TSDFFusion
 python setup.py install
 ```
 
@@ -35,11 +38,6 @@ You can run an optimization using:
 python optimize.py --config=configs/<config_file>.txt
 ```
 
-Make sure you run TSDF fusion for the pretraining step:
-
-```
-python tsdf_fusion.py --config=configs/<config_file>.txt
-```
 After the optimization, you can extract the 3D surface mesh using:
 
 ```
