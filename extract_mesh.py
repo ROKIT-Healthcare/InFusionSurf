@@ -129,7 +129,7 @@ if __name__ == '__main__':
         network_fn_state_dict = ckpt['network_fn_state_dict']
         
         models = {}
-        model = FastSurf(network_fn_state_dict['xyz_min'], network_fn_state_dict['xyz_max'],
+        model = InFusionSurf(network_fn_state_dict['xyz_min'], network_fn_state_dict['xyz_max'],
                          voxel_size=network_fn_state_dict['voxel_size'][0], feature_dim=args.dense_features, 
                          D=args.netdepth, W=args.netwidth, 
                          viewbase_pe=args.multires_views, i_view_embed=args.i_embed,

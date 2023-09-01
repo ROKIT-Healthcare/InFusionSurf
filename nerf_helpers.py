@@ -104,14 +104,14 @@ def get_embedder(multires, i=0):
 
 
 '''Model'''
-class FastSurf(torch.nn.Module):
+class InFusionSurf(torch.nn.Module):
     def __init__(self, xyz_min, xyz_max,
                  voxel_size=0.1, feature_dim=12,
                  D=3, W=128,
                  viewbase_pe=4, i_view_embed=0,
                  n_frame_features=2
         ):
-        super(FastSurf, self).__init__()
+        super(InFusionSurf, self).__init__()
         
         self.register_buffer('xyz_min', torch.Tensor(xyz_min))
         self.register_buffer('xyz_max', torch.Tensor(xyz_max))
@@ -160,19 +160,19 @@ class FastSurf(torch.nn.Module):
         
         self.world_size = torch.ceil((self.xyz_max - self.xyz_min) / voxel_size).long()
         
-        print('fastsurf: voxel_size      ', self.voxel_size[0])
-        print('fastsurf: world_size      ', self.world_size)
+        print('infusionsurf: voxel_size      ', self.voxel_size[0])
+        print('infusionsurf: world_size      ', self.world_size)
 
     @torch.no_grad()
     def scale_volume_grid(self, voxel_size):
-        print('fastsurf: scale_volume_grid start')
+        print('infusionsurf: scale_volume_grid start')
         ori_world_size = self.world_size
         self._set_grid_resolution(voxel_size)
-        print('fastsurf: scale_volume_grid scale world_size from', ori_world_size.tolist(), 'to', self.world_size.tolist())
+        print('infusionsurf: scale_volume_grid scale world_size from', ori_world_size.tolist(), 'to', self.world_size.tolist())
 
         self.feature.scale_volume_grid(self.world_size)
 
-        print('fastsurf: scale_volume_grid finish')
+        print('infusionsurf: scale_volume_grid finish')
 
     def forward(self, x, sdf_only=False):
         if sdf_only:
