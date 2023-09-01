@@ -493,13 +493,13 @@ def create_model(args):
 
         network_fn_state_dict = ckpt['network_fn_state_dict']
         
-        model = FastSurf(network_fn_state_dict['xyz_min'], network_fn_state_dict['xyz_max'],
+        model = InFusionSurf(network_fn_state_dict['xyz_min'], network_fn_state_dict['xyz_max'],
                          voxel_size=network_fn_state_dict['voxel_size'][0], feature_dim=args.dense_features, 
                          D=args.netdepth, W=args.netwidth, 
                          viewbase_pe=args.multires_views, i_view_embed=args.i_embed,
                          n_frame_features=args.frame_features).to(device)
     else:
-        model = FastSurf(args.xyz_min, args.xyz_max,
+        model = InFusionSurf(args.xyz_min, args.xyz_max,
                          voxel_size=args.voxel_size * args.sc_factor, feature_dim=args.dense_features, 
                          D=args.netdepth, W=args.netwidth, 
                          viewbase_pe=args.multires_views, i_view_embed=args.i_embed,

@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-    content="FastSurf: Fast Neural RGB-D Surface Reconstruction using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning.">
-  <meta name="keywords" content="fastsurf, rgbd, rgb-d, surface, fast-surf, 3d, reconstruction">
+    content="InFusionSurf: Refining Neural RGB-D Surface Reconstruction Using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning.">
+  <meta name="keywords" content="infusionsurf, fastsurf, rgbd, rgb-d, surface, fast-surf, 3d, reconstruction">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FastSurf: Fast Neural RGB-D Surface Reconstruction</title>
+  <title>InFusionSurf: Refining Neural RGB-D Surface Reconstruction Using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -28,7 +28,7 @@
       <div class="container">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-2 publication-title">FastSurf: Fast Neural RGB-D Surface Reconstruction using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning</h1>
+            <h1 class="title is-2 publication-title">InFusionSurf: Refining Neural RGB-D Surface Reconstruction Using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
                 <a href="https://www.linkedin.com/in/seunghwan-lee-9b2746102/">Seunghwan Lee</a>
@@ -64,7 +64,7 @@
                 </span>
                 <!-- Code Link. -->
                 <span class="link-block">
-                  <a href="https://github.com/ROKIT-Healthcare/FastSurf"
+                  <a href="https://github.com/ROKIT-Healthcare/InFusionSurf"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -86,7 +86,8 @@
       <div class="column is-8">
         <img id="teaser" src="static/images/model-teaser.jpg" />
         <p class="subtitle has-text-centered">
-          Our method proposes per-frame intrinsic refinement and classical TSDF Fusion prior learning schemes for fast and high-quality 3D surface reconstruction.
+          Our method proposes per-frame intrinsic refinement and classical TSDF Fusion prior learning schemes for high-quality 3D surface reconstruction with
+          minimal impact on optimization time.
         </p>
       </div>
     </div>
@@ -101,8 +102,7 @@
           <h2 class="title is-2">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              We introduce FastSurf, an accelerated neural radiance field (NeRF) framework that incorporates depth information for 3D reconstruction. A dense feature grid and shallow multi-layer perceptron are used for fast and accurate surface optimization of the entire scene. Our per-frame intrinsic refinement scheme corrects the frame-specific errors that cannot be handled by global optimization. Furthermore, FastSurf utilizes a classical real-time 3D surface reconstruction method, the truncated signed distance field (TSDF) Fusion, as prior knowledge to pretrain the feature grid to accelerate the training. The quantitative and qualitative experiments comparing the performances of FastSurf against prior work indicate that our method is capable of quickly and accurately reconstructing a scene with high-frequency details. We also demonstrate the effectiveness of our per-frame intrinsic refinement and TSDF Fusion prior learning techniques via an ablation study.
-            </p>
+              We introduce InFusionSurf, a novel approach to enhance the fidelity of neural radiance field (NeRF) frameworks for 3D surface reconstruction using RGB-D video frames. Building upon previous methods that have employed feature encoding to improve optimization speed, we further improve the reconstruction quality with minimal impact on optimization time by refining depth information. Our per-frame intrinsic refinement scheme addresses frame-specific blurs caused by camera motion in each depth frame. Furthermore, InFusionSurf utilizes a classical real-time 3D surface reconstruction method, the truncated signed distance field (TSDF) Fusion, as prior knowledge to pretrain the feature grid to support reconstruction details while accelerating the training. The quantitative and qualitative experiments comparing the performances of InFusionSurf against prior work indicate that our method is capable of accurately reconstructing a scene without sacrificing optimization speed. We also demonstrate the effectiveness of our per-frame intrinsic refinement and TSDF Fusion prior learning techniques via an ablation study. </p>
           </div>
         </div>
       </div>
@@ -120,9 +120,8 @@
               We compare our method with <a href="https://jingwenwang95.github.io/go_surf/">GO-Surf</a> and 
               <a href="https://dazinovic.github.io/neural-rgbd-surface-reconstruction/">Neural RGB-D</a> at different points in time. 
               The comparison was conducted using <a href="http://www.scan-net.org/">ScanNet</a>. 
-              When trained for a shorter amount of time, FastSurf recovers high-frequency details overlooked by GO-Surf and generates much less erroneous surfaces. 
-              Given a longer training time, FastSurf achieves a quality on par with that of Neural RGB-D, but at a significantly shorter amount of time (×7.7 faster on average). 
-              It also fixes the errors caused by the camera motion.
+              When trained for a shorter amount of time, InFusionSurf recovers high-frequency details overlooked by GO-Surf and generates much less erroneous surfaces. 
+              Given a longer training time, InFusionSurf achieves better results than Neural RGB-D, recovering the structures Neural RGB-D missed in some cases. 
             </p>
           </div>
         </div>
@@ -181,8 +180,8 @@
     <div class="container content">
       <h2 class="title">BibTeX</h2>
       <pre><code>
-        @article{lee2023fastsurf,
-          title={FastSurf: Fast Neural RGB-D Surface Reconstruction using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning},
+        @article{lee2023infusionsurf,
+          title={InFusionSurf: Refining Neural RGB-D Surface Reconstruction Using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning},
           author={Lee, Seunghwan and Park, Gwanmo and Son, Hyewon and Ryu, Jiwon and Chae, Han Joo},
           journal={arXiv preprint arXiv:2303.04508},
           year={2023}
@@ -198,7 +197,7 @@
         <a class="icon-link" href="https://arxiv.org/abs/2303.04508">
           <i class="fas fa-file-pdf"></i>
         </a>
-        <a class="icon-link" href="https://github.com/ROKIT-Healthcare/FastSurf" class="external-link" disabled>
+        <a class="icon-link" href="https://github.com/ROKIT-Healthcare/InFusionSurf" class="external-link" disabled>
           <i class="fab fa-github"></i>
         </a>
       </div>

@@ -1,21 +1,21 @@
-# FastSurf
+# InFusionSurf
 
-### [Paper](https://arxiv.org/abs/2303.04508) | [Project Page](https://rokit-healthcare.github.io/FastSurf/)
+### [Paper](https://arxiv.org/abs/2303.04508) | [Project Page](https://rokit-healthcare.github.io/InFusionSurf/)
 
-> FastSurf: Fast Neural RGB-D Surface Reconstruction using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning <br />
+> InFusionSurf: Refining Neural RGB-D Surface Reconstruction Using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning <br />
 > *Seunghwan Lee, Gwanmo Park, Hyewon Son, Jiwon Ryu, Han Joo Chae* <br />
 > arXiv preprint
 
-![An overview of FastSurf.](docs/static/images/model-teaser.jpg "An overview of FastSurf.")
+![An overview of InFusionSurf.](docs/static/images/model-teaser.jpg "An overview of InFusionSurf.")
 
-This repository contains the official implementation of ***FastSurf***, an accelerated neural radiance field (NeRF) framework that incorporates depth information for 3D reconstruction. The novel per-frame intrinsic refinement and classical TSDF Fusion prior learning schemes allow fast and high-quality 3D surface reconstruction.
+This repository contains the official implementation of ***InFusionSurf***, a novel approach to enhance the fidelity of neural radiance field (NeRF) frameworks for 3D surface reconstruction using RGB-D video frames. The novel per-frame intrinsic refinement and classical TSDF Fusion prior learning schemes allow high-quality 3D surface reconstruction without sacrificing optimization speed.
 
 
 ## Installation
 
 ```
-git clone https://github.com/ROKIT-Healthcare/FastSurf.git
-cd FastSurf
+git clone https://github.com/ROKIT-Healthcare/InFusionSurf.git
+cd InFusionSurf
 pip install -r requirements.txt
 ```
 
@@ -94,8 +94,8 @@ The paper uses two different datasets: [ScanNet V2](https://github.com/ScanNet/S
 If you use this code in your research, please consider citing:
 
 ```
-@article{lee2023fastsurf,
-  title={FastSurf: Fast Neural RGB-D Surface Reconstruction using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning},
+@article{lee2023infusionsurf,
+  title={InFusionSurf: Refining Neural RGB-D Surface Reconstruction Using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning},
   author={Lee, Seunghwan and Park, Gwanmo and Son, Hyewon and Ryu, Jiwon and Chae, Han Joo},
   journal={arXiv preprint arXiv:2303.04508},
   year={2023}
