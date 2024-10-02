@@ -1,10 +1,10 @@
 # InFusionSurf
 
-### [Paper](https://arxiv.org/abs/2303.04508) | [Project Page](https://rokit-healthcare.github.io/InFusionSurf/)
+### [Paper](https://doi.ieeecomputersociety.org/10.1109/ICME57554.2024.10687901) | [arXiv](https://arxiv.org/abs/2303.04508) | [Project Page](https://rokit-healthcare.github.io/InFusionSurf/)
 
 > InFusionSurf: Refining Neural RGB-D Surface Reconstruction Using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning <br />
 > *Seunghwan Lee, Gwanmo Park, Hyewon Son, Jiwon Ryu, Han Joo Chae* <br />
-> arXiv preprint
+> 2024 IEEE International Conference on Multimedia and Expo (ICME)
 
 ![An overview of InFusionSurf.](docs/static/images/model-teaser.jpg "An overview of InFusionSurf.")
 
@@ -94,11 +94,16 @@ The paper uses two different datasets: [ScanNet V2](https://github.com/ScanNet/S
 If you use this code in your research, please consider citing:
 
 ```
-@article{lee2023infusionsurf,
-  title={InFusionSurf: Refining Neural RGB-D Surface Reconstruction Using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning},
-  author={Lee, Seunghwan and Park, Gwanmo and Son, Hyewon and Ryu, Jiwon and Chae, Han Joo},
-  journal={arXiv preprint arXiv:2303.04508},
-  year={2023}
+@INPROCEEDINGS{lee2024infusionsurf,
+    author={Lee, Seunghwan and Park, Gwanmo and Son, Hyewon and Ryu, Jiwon and Chae, Han Joo},
+    booktitle={2024 IEEE International Conference on Multimedia and Expo (ICME)}, 
+    title={InFusionSurf: Refining Neural RGB-D Surface Reconstruction Using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning}, 
+    year={2024},
+    volume={},
+    number={},
+    pages={1-6},
+    keywords={Training;Surface reconstruction;Three-dimensional displays;Refining;Reconstruction algorithms;Neural radiance field;Cameras;RGB-D Surface Reconstruction;TSDF Fusion;Neural Radiance Field;Camera Motion Blur},
+    doi={10.1109/ICME57554.2024.10687901}
 }
 ```
 

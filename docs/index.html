@@ -31,7 +31,7 @@
             <h1 class="title is-2 publication-title">InFusionSurf: Refining Neural RGB-D Surface Reconstruction Using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://www.linkedin.com/in/seunghwan-lee-9b2746102/">Seunghwan Lee</a>
+                <a href="https://lshwan.github.io/">Seunghwan Lee</a>
               </span>
               <span class="author-block">
                 <a href="https://www.linkedin.com/in/gwanmo-park-5a4117171/">Gwanmo Park</a>
@@ -53,6 +53,16 @@
 
             <div class="column has-text-centered">
               <div class="publication-links">
+                <!-- Paper Link. -->
+                <span class="link-block">
+                  <a href="https://doi.ieeecomputersociety.org/10.1109/ICME57554.2024.10687901"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
                 <!-- arXiv Link. -->
                 <span class="link-block">
                   <a href="https://arxiv.org/abs/2303.04508" class="external-link button is-normal is-rounded is-dark">
@@ -102,7 +112,7 @@
           <h2 class="title is-2">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              We introduce InFusionSurf, a novel approach to enhance the fidelity of neural radiance field (NeRF) frameworks for 3D surface reconstruction using RGB-D video frames. Building upon previous methods that have employed feature encoding to improve optimization speed, we further improve the reconstruction quality with minimal impact on optimization time by refining depth information. Our per-frame intrinsic refinement scheme addresses frame-specific blurs caused by camera motion in each depth frame. Furthermore, InFusionSurf utilizes a classical real-time 3D surface reconstruction method, the truncated signed distance field (TSDF) Fusion, as prior knowledge to pretrain the feature grid to support reconstruction details while accelerating the training. The quantitative and qualitative experiments comparing the performances of InFusionSurf against prior work indicate that our method is capable of accurately reconstructing a scene without sacrificing optimization speed. We also demonstrate the effectiveness of our per-frame intrinsic refinement and TSDF Fusion prior learning techniques via an ablation study. </p>
+              We introduce InFusionSurf, an innovative enhancement for neural radiance field (NeRF) frameworks in 3D surface reconstruction using RGB-D video frames. Building upon previous methods that have employed feature encoding to improve optimization speed, we further improve the reconstruction quality with minimal impact on optimization time by refining depth information. InFusionSurf addresses camera motion-induced blurs in each depth frame through a per-frame intrinsic refinement scheme. It incorporates the truncated signed distance field (TSDF) Fusion, a classical real-time 3D surface reconstruction method, as a pretraining tool for the feature grid, enhancing reconstruction details and training speed. Comparative quantitative and qualitative analyses show that InFusionSurf reconstructs scenes with high accuracy while maintaining optimization efficiency. The effectiveness of our intrinsic refinement and TSDF Fusion-based pretraining is further validated through an ablation study. </p>
           </div>
         </div>
       </div>
@@ -180,11 +190,16 @@
     <div class="container content">
       <h2 class="title">BibTeX</h2>
       <pre><code>
-        @article{lee2023infusionsurf,
-          title={InFusionSurf: Refining Neural RGB-D Surface Reconstruction Using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning},
+        @INPROCEEDINGS{lee2024infusionsurf,
           author={Lee, Seunghwan and Park, Gwanmo and Son, Hyewon and Ryu, Jiwon and Chae, Han Joo},
-          journal={arXiv preprint arXiv:2303.04508},
-          year={2023}
+          booktitle={2024 IEEE International Conference on Multimedia and Expo (ICME)}, 
+          title={InFusionSurf: Refining Neural RGB-D Surface Reconstruction Using Per-Frame Intrinsic Refinement and TSDF Fusion Prior Learning}, 
+          year={2024},
+          volume={},
+          number={},
+          pages={1-6},
+          keywords={Training;Surface reconstruction;Three-dimensional displays;Refining;Reconstruction algorithms;Neural radiance field;Cameras;RGB-D Surface Reconstruction;TSDF Fusion;Neural Radiance Field;Camera Motion Blur},
+          doi={10.1109/ICME57554.2024.10687901}
         }
       </code></pre>
           </div>
